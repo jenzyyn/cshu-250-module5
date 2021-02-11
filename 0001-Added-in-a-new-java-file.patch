@@ -1,0 +1,60 @@
+From ffea11f17bc1e809eb5087b1c5b2198dbd688250 Mon Sep 17 00:00:00 2001
+From: Shane Panter <shane@foundationcode.com>
+Date: Thu, 31 May 2018 10:25:02 -0600
+Subject: [PATCH] Added in a new java file
+
+---
+ 250/projects/patch-practice/HelloWorld.java | 41 +++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+ create mode 100644 250/projects/patch-practice/HelloWorld.java
+
+diff --git a/250/projects/patch-practice/HelloWorld.java b/250/projects/patch-practice/HelloWorld.java
+new file mode 100644
+index 0000000..e61d680
+--- /dev/null
++++ b/250/projects/patch-practice/HelloWorld.java
+@@ -0,0 +1,41 @@
++/**
++ *Super complex hello world
++ */
++public class HelloWorld{
++    private Talker talkers[]=new Talker[2];
++
++    public HelloWorld(){
++	talkers[0]=new Hello();
++	talkers[1]=new World();
++    }
++
++    public void sayHello(){
++	StringBuilder bldr = new StringBuilder();
++	for(Talker t:talkers){
++	    bldr.append(t.talk());
++	    bldr.append(" ");
++	}
++	System.out.println(bldr.toString());
++    }
++
++    private interface Talker{
++	public String talk();
++    }
++
++    private class Hello implements Talker{
++	public String talk(){
++	    return "Hello";
++	}
++    }
++
++    private class World implements Talker{
++	public String talk(){
++	    return "World";
++	}
++    }
++
++    public static void main(String[] args){
++	HelloWorld helloworld = new HelloWorld();
++	helloworld.sayHello();
++    }
++}
+-- 
+2.10.2
+
